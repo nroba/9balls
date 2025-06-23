@@ -62,13 +62,17 @@ def download_csv():
             m['point_diff'], m['game_type'], m['winner']
         ])
 
-    output.seek(0)
+    # UTF-8 with BOM を付ける
+    bom = '\ufeff'  # UTF-8 BOM
+    encoded_csv = bom + output.getvalue()
+
     return send_file(
-        io.BytesIO(output.getvalue().encode('utf-8')),
+        io.BytesIO(encoded_csv.encode('utf-8')),
         mimetype='text/csv',
         as_attachment=True,
         download_name='match_records.csv'
     )
+
 
 @app.route('/stats')
 def show_stats():
