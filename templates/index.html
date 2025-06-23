@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>9Balls App</title>
+    <title>ビリヤード対戦記録</title>
 </head>
 <body>
-    <h1>Hello, Billiards!</h1>
+    <h1>対戦記録フォーム</h1>
+    <form action="/submit" method="post">
+        <p>プレイヤー1: <input type="text" name="player1" required></p>
+        <p>得点1: <input type="number" name="score1" required></p>
+        <p>プレイヤー2: <input type="text" name="player2" required></p>
+        <p>得点2: <input type="number" name="score2" required></p>
+        <p>種目: 
+            <select name="game_type">
+                <option value="ナインボール">ナインボール</option>
+                <option value="エイトボール">エイトボール</option>
+            </select>
+        </p>
+        <p>勝者:
+            <select name="winner">
+                <option value="player1">プレイヤー1</option>
+                <option value="player2">プレイヤー2</option>
+            </select>
+        </p>
+        <p>対戦日: <input type="date" name="date" required></p>
+        <button type="submit">記録</button>
+    </form>
+    <p><a href="/matches">▶ 対戦一覧を見る</a></p>
 </body>
 </html>

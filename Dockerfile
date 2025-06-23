@@ -15,3 +15,5 @@ EXPOSE 10000
 
 # アプリ起動
 CMD ["python", "app.py"]
+
+

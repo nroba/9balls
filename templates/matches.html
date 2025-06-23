@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>対戦一覧</title>
+</head>
+<body>
+    <h1>対戦記録一覧</h1>
+    <table border="1">
+        <tr>
+            <th>日付</th>
+            <th>プレイヤー1</th>
+            <th>得点</th>
+            <th>プレイヤー2</th>
+            <th>得点</th>
+            <th>得点差</th>
+            <th>種目</th>
+            <th>勝者</th>
+        </tr>
+        {% for m in matches %}
+        <tr>
+            <td>{{ m.date }}</td>
+            <td>{{ m.player1 }}</td>
+            <td>{{ m.score1 }}</td>
+            <td>{{ m.player2 }}</td>
+            <td>{{ m.score2 }}</td>
+            <td>{{ m.point_diff }}</td>
+            <td>{{ m.game_type }}</td>
+            <td>{{ m.winner }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="/">← 対戦入力に戻る</a></p>
+    <p>
+    <a href="/download"> CSVダウンロード</a> |
+    <a href="/stats"> グラフ表示</a>
+</p>
+</body>
+</html>
