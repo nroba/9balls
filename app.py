@@ -19,11 +19,14 @@ def submit():
     player2 = request.form['player2']
     game_type = request.form['game_type']
     date = request.form['date']
-    shop = request.form['shop']  # ← 店舗名の取得
+    shop = request.form['shop']
     score1 = int(request.form['score1'])
     score2 = int(request.form['score2'])
     ace1 = int(request.form['ace1'])
     ace2 = int(request.form['ace2'])
+    cue1 = request.form['cue1']
+    cue2 = request.form['cue2']
+    comment = request.form.get('comment', '')
 
     # 勝者の自動判定
     if score1 > score2:
@@ -38,7 +41,7 @@ def submit():
 
     matches.append({
         'date': date,
-        'shop': shop,  # ← 対戦記録に追加
+        'shop': shop,
         'games': games,
         'player1': player1,
         'player2': player2,
@@ -48,7 +51,10 @@ def submit():
         'score2': score2,
         'point_diff': point_diff,
         'ace1': ace1,
-        'ace2': ace2
+        'ace2': ace2,
+        'cue1': cue1,
+        'cue2': cue2,
+        'comment': comment
     })
 
     return redirect(url_for('show_matches'))
@@ -61,13 +67,16 @@ def show_matches():
 def download_csv():
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(['日付', '店舗名', 'プレイヤー1', '得点1', 'エース1', 'プレイヤー2', '得点2', 'エース2', '得点差', 'ゲーム数', '種目', '勝者'])
+    writer.writerow(['日付', '店舗名', 'プレイヤー1', '得点1', 'エース1', 'キュー1',
+                     'プレイヤー2', '得点2', 'エース2', 'キュー2',
+                     '得点差', 'ゲーム数', '種目', '勝者', 'コメント'])
 
     for m in matches:
         writer.writerow([
-            m['date'], m['shop'], m['player1'], m['score1'], m['ace1'],
-            m['player2'], m['score2'], m['ace2'], m['point_diff'],
-            m['games'], m['game_type'], m['winner']
+            m['date'], m['shop'],
+            m['player1'], m['score1'], m['ace1'], m['cue1'],
+            m['player2'], m['score2'], m['ace2'], m['cue2'],
+            m['point_diff'], m['games'], m['game_type'], m['winner'], m['comment']
         ])
 
     bom = '\ufeff'

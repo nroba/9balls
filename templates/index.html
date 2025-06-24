@@ -7,50 +7,66 @@
     </div>
     <div class="card-body">
         <form action="/submit" method="post">
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">対戦日</label>
-                <input type="date" class="form-control" name="date" required>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">対戦日</label>
+                    <input type="date" class="form-control" name="date" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">店舗名</label>
+                    <input type="text" class="form-control" name="shop" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">ゲーム数</label>
+                    <input type="number" class="form-control" name="games" required>
+                </div>
             </div>
-            <div class="col-md-4">
-                <label class="form-label">店舗名</label>
-                <input type="text" class="form-control" name="shop" required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">ゲーム数</label>
-                <input type="number" class="form-control" name="games" required>
-            </div>
-        </div>
+
             <div class="container mt-4">
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">プレイヤー1</label>
-                        <input type="text" class="form-control" name="player1" value="和氣" required>
+                        <input type="text" class="form-control" name="player1" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">得点1</label>
                         <input type="number" class="form-control" name="score1" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">エース数</label>
                         <input type="number" class="form-control" name="ace1" value="0" required>
                     </div>
+                    <div class="col-md-3">
+                        <label class="form-label">キュー</label>
+                        <select class="form-select" name="cue1" required>
+                            <option value="マイキュー">マイキュー</option>
+                            <option value="ハウスキュー">ハウスキュー</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">プレイヤー2</label>
-                        <input type="text" class="form-control" name="player2" value="松本" required>
+                        <input type="text" class="form-control" name="player2" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">得点2</label>
                         <input type="number" class="form-control" name="score2" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">エース数</label>
                         <input type="number" class="form-control" name="ace2" value="0" required>
                     </div>
+                    <div class="col-md-3">
+                        <label class="form-label">キュー</label>
+                        <select class="form-select" name="cue2" required>
+                            <option value="マイキュー">マイキュー</option>
+                            <option value="ハウスキュー">ハウスキュー</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+
             <div class="mb-3">
                 <label class="form-label">種目</label>
                 <select class="form-select" name="game_type">
@@ -58,6 +74,12 @@
                     <option value="エイトボール">エイトボール</option>
                 </select>
             </div>
+
+            <div class="mb-3">
+                <label class="form-label">コメント（任意）</label>
+                <textarea class="form-control" name="comment" rows="3" placeholder="自由にメモなどを記入できます"></textarea>
+            </div>
+
             <button type="submit" class="btn btn-primary w-100">記録を保存</button>
         </form>
     </div>

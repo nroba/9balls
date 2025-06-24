@@ -13,14 +13,17 @@
                     <th>店舗名</th>
                     <th>プレイヤー1</th>
                     <th>得点</th>
-                    <th>エース数</th>
+                    <th>エース</th>
+                    <th>キュー</th>
                     <th>プレイヤー2</th>
                     <th>得点</th>
-                    <th>エース数</th>
+                    <th>エース</th>
+                    <th>キュー</th>
                     <th>得点差</th>
                     <th>ゲーム数</th>
                     <th>種目</th>
                     <th>勝者</th>
+                    <th>コメント</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,19 +34,23 @@
                     <td>{{ match.player1 }}</td>
                     <td>{{ match.score1 }}</td>
                     <td>{{ match.ace1 }}</td>
+                    <td>{{ match.cue1 }}</td>
                     <td>{{ match.player2 }}</td>
                     <td>{{ match.score2 }}</td>
                     <td>{{ match.ace2 }}</td>
+                    <td>{{ match.cue2 }}</td>
                     <td>{{ match.point_diff }}</td>
                     <td>{{ match.games }}</td>
                     <td>{{ match.game_type }}</td>
                     <td>{{ match.winner }}</td>
+                    <td>{{ match.comment }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
 <div class="text-center mt-4">
     <a href="/" class="btn btn-outline-primary">＋ 新しい対戦を記録</a>
     <a href="/download" class="btn btn-outline-dark ms-2">CSVでダウンロード</a>
