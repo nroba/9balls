@@ -19,11 +19,11 @@ def submit():
     player2 = request.form['player2']
     game_type = request.form['game_type']
     date = request.form['date']
+    shop = request.form['shop']  # ← 店舗名の取得
     score1 = int(request.form['score1'])
     score2 = int(request.form['score2'])
     ace1 = int(request.form['ace1'])
     ace2 = int(request.form['ace2'])
-
 
     # 勝者の自動判定
     if score1 > score2:
@@ -38,6 +38,7 @@ def submit():
 
     matches.append({
         'date': date,
+        'shop': shop,  # ← 対戦記録に追加
         'games': games,
         'player1': player1,
         'player2': player2,
@@ -60,17 +61,16 @@ def show_matches():
 def download_csv():
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(['日付', 'プレイヤー1', '得点1', 'プレイヤー2', '得点2', '得点差', '種目', '勝者'])
+    writer.writerow(['日付', '店舗名', 'プレイヤー1', '得点1', 'エース1', 'プレイヤー2', '得点2', 'エース2', '得点差', 'ゲーム数', '種目', '勝者'])
 
     for m in matches:
         writer.writerow([
-            m['date'], m['player1'], m['score1'],
-            m['player2'], m['score2'],
-            m['point_diff'], m['game_type'], m['winner']
+            m['date'], m['shop'], m['player1'], m['score1'], m['ace1'],
+            m['player2'], m['score2'], m['ace2'], m['point_diff'],
+            m['games'], m['game_type'], m['winner']
         ])
 
-    # UTF-8 with BOM を付ける
-    bom = '\ufeff'  # UTF-8 BOM
+    bom = '\ufeff'
     encoded_csv = bom + output.getvalue()
 
     return send_file(
@@ -79,7 +79,6 @@ def download_csv():
         as_attachment=True,
         download_name='match_records.csv'
     )
-
 
 @app.route('/stats')
 def show_stats():
