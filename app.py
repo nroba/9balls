@@ -14,12 +14,16 @@ def index():
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    games = int(request.form['games'])
     player1 = request.form['player1']
     player2 = request.form['player2']
     game_type = request.form['game_type']
     date = request.form['date']
     score1 = int(request.form['score1'])
     score2 = int(request.form['score2'])
+    ace1 = int(request.form['ace1'])
+    ace2 = int(request.form['ace2'])
+
 
     # 勝者の自動判定
     if score1 > score2:
@@ -33,14 +37,17 @@ def submit():
     point_diff = abs(score1 - score2)
 
     matches.append({
+        'date': date,
+        'games': games,
         'player1': player1,
         'player2': player2,
         'game_type': game_type,
         'winner': winner,
-        'date': date,
         'score1': score1,
         'score2': score2,
-        'point_diff': point_diff
+        'point_diff': point_diff,
+        'ace1': ace1,
+        'ace2': ace2
     })
 
     return redirect(url_for('show_matches'))
