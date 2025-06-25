@@ -27,23 +27,23 @@
                 </tr>
             </thead>
             <tbody>
-                {% for match in matches %}
+                {% for m in matches %}
                 <tr>
-                    <td>{{ match.date }}</td>
-                    <td>{{ match.shop }}</td>
-                    <td>{{ match.player1 }}</td>
-                    <td>{{ match.score1 }}</td>
-                    <td>{{ match.ace1 }}</td>
-                    <td>{{ match.cue1 }}</td>
-                    <td>{{ match.player2 }}</td>
-                    <td>{{ match.score2 }}</td>
-                    <td>{{ match.ace2 }}</td>
-                    <td>{{ match.cue2 }}</td>
-                    <td>{{ match.point_diff }}</td>
-                    <td>{{ match.games }}</td>
-                    <td>{{ match.game_type }}</td>
-                    <td>{{ match.winner }}</td>
-                    <td>{{ match.comment }}</td>
+                    <td>{{ m.date }}</td>
+                    <td>{{ m.shop }}</td>
+                    <td>{{ m.player1 }}</td>
+                    <td>{{ m.score1 }}</td>
+                    <td>{{ m.ace1 }}</td>
+                    <td>{{ m.cue1 }}</td>
+                    <td>{{ m.player2 }}</td>
+                    <td>{{ m.score2 }}</td>
+                    <td>{{ m.ace2 }}</td>
+                    <td>{{ m.cue2 }}</td>
+                    <td>{{ m.point_diff }}</td>
+                    <td>{{ m.games }}</td>
+                    <td>{{ m.game_type }}</td>
+                    <td>{{ m.winner }}</td>
+                    <td>{{ m.comment }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

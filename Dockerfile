@@ -1,19 +1,14 @@
-# ベースイメージ
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# 作業ディレクトリ作成
+# 作業ディレクトリ設定
 WORKDIR /app
 
-# ファイルをコピー
-COPY . .
-
-# 依存関係をインストール
+# 依存関係インストール
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# ポートを開放（Flaskが使う）
-EXPOSE 10000
+# アプリケーションコードのコピー
+COPY . .
 
-# アプリ起動
+# アプリケーション実行
 CMD ["python", "app.py"]
-
-

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: billiard-app
+    ports:
+      - "10000:10000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+    command: python app.py
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
